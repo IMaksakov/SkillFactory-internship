@@ -3,18 +3,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
 from pereval.views import PerevalViewSet
+
 
 router = routers.SimpleRouter()
 router.register(r'pereval', PerevalViewSet)
 
-
 urlpatterns = [
-    path('', include(router.urls)),
+    path('pereval/', PerevalViewSet.as_view({'get': 'list'})),
     ]
-
-
 
 
 if settings.DEBUG:
